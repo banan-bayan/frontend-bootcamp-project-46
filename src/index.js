@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import { readFileSync } from 'node:fs';
 
-
 export default (path1, path2) => {
   const json1 = readFileSync(path1, 'utf-8');
   const json2 = readFileSync(path2, 'utf-8');
