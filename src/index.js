@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { readFileSync } from 'node:fs';
+import statuses from '../constants.js';
 
 export default (path1, path2) => {
   const json1 = readFileSync(path1, 'utf-8');
@@ -20,19 +21,19 @@ export default (path1, path2) => {
       });
     }
   });
-  const statuses = {
-    unchanged: ' ',
-    deleted: '-',
-    added: '+',
-  };
+  // const statuses = {
+  //   unchanged: ' ',
+  //   deleted: '-',
+  //   added: '+',
+  // };
   const strings = resultArr.map((subSt) => {
     if (subSt.status === 'changed') {
-      return `${statuses.deleted} ${subSt.key}: ${subSt.value1} \n${statuses.added} ${subSt.key}: ${subSt.value2}`;
+      return `  ${statuses.deleted} ${subSt.key}: ${subSt.value1}\n  ${statuses.added} ${subSt.key}: ${subSt.value2}`;
     }
-    return `${statuses[subSt.status]} ${subSt.key}: ${subSt.value}`;
+    return `  ${statuses[subSt.status]} ${subSt.key}: ${subSt.value}`;
   });
-  const obString = `{\n${strings.join('\n')} \n}`;
-  console.log(obString);
+  const obString = `{\n${strings.join('\n')}\n}`;
+  return obString;
 };
 
 // const stringify = (data, symbols = ' ', repeat = 1) => {
