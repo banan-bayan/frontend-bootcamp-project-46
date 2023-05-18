@@ -6,6 +6,7 @@ const getStringArr = (path1, path2) => {
   const obj1 = getParseFile(path1);
   const obj2 = getParseFile(path2);
   const resultArr = getMediateObject(obj1, obj2);
+  console.log(resultArr);
   const strings = resultArr.map((subSt) => {
     if (subSt.status === 'changed') {
       return `  ${statuses.deleted} ${subSt.key}: ${subSt.value1}\n  ${statuses.added} ${subSt.key}: ${subSt.value2}`;
