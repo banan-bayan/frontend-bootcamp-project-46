@@ -1,15 +1,11 @@
-import { readFileSync } from 'node:fs';
 import statuses from '../constants.js';
 import getMediateObject from '../utils.js';
+import getParseFile from './parser.js';
 
-export default (path1, path2) => {
-  const json1 = readFileSync(path1, 'utf-8');
-  const json2 = readFileSync(path2, 'utf-8');
-  const obj1 = JSON.parse(json1);
-  const obj2 = JSON.parse(json2);
-
+const getStringArr = (path1, path2) => {
+  const obj1 = getParseFile(path1);
+  const obj2 = getParseFile(path2);
   const resultArr = getMediateObject(obj1, obj2);
-
   const strings = resultArr.map((subSt) => {
     if (subSt.status === 'changed') {
       return `  ${statuses.deleted} ${subSt.key}: ${subSt.value1}\n  ${statuses.added} ${subSt.key}: ${subSt.value2}`;
@@ -20,6 +16,7 @@ export default (path1, path2) => {
 
   return obString;
 };
+export default getStringArr;
 // const stringify = (data, symbols = ' ', repeat = 1) => {
 //    const iter = (node, level) => {
 //      if (!_.isObject(node)) {
