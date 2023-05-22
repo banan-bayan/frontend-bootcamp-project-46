@@ -21,9 +21,10 @@ export default (tree) => {
     const strings = [];
     node.forEach((subSt) => {
       if (subSt.status === 'changed') {
-        strings.push(`${symbols.repeat(level * countRepeat)}- ${subSt.key}: ${stringify(subSt.value1, level + 1)}\n${symbols.repeat(level * countRepeat)}+ ${subSt.key}: ${stringify(subSt.value2, level + 1)}`);
+        strings.push(`${symbols.repeat(countRepeat * level)}- ${subSt.key}: ${stringify(subSt.value1, level + 1)}\n
+        ${symbols.repeat(countRepeat * level)}+ ${subSt.key}: ${stringify(subSt.value2, level + 1)}`);
       } else if (subSt.status === 'nested') {
-        strings.push(`${symbols.repeat(level * countRepeat)}${subSt.key}: ${iter(subSt.children, level + 1)}`);
+        strings.push(`${symbols.repeat(countRepeat * level)}${subSt.key}: ${iter(subSt.children, level + 1)}`);
       } else {
         strings.push(`${symbols.repeat(countRepeat * level)}${statuses[subSt.status]} ${subSt.key}: ${stringify(subSt.value, level + 1)}`);
       }
