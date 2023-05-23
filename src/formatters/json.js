@@ -1,1 +1,4 @@
-export default (tree) => JSON.stringify(tree);
+export default (tree) => {
+  const stringJson = JSON.stringify(tree);
+  return stringJson;
+};
