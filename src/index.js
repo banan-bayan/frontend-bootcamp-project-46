@@ -10,6 +10,7 @@ const getStringArr = (path1, path2, formatter = 'stylish') => {
 
   const extension1 = path.extname(path1).slice(1);
   const extension2 = path.extname(path2).slice(1);
+
   const obj1 = getParseFile(data1, extension1);
   const obj2 = getParseFile(data2, extension2);
 

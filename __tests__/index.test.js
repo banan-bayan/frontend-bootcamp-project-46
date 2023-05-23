@@ -28,3 +28,8 @@ test('testPlain', () => {
   expect(getStringArr(pathTreeJson1, pathTreeJson2, 'plain')).toEqual(readFileSync(pathTxtPlain, 'utf8'));
   expect(getStringArr(pathTreeYml1, pathTreeYml2, 'plain')).toEqual(readFileSync(pathTxtPlain, 'utf8'));
 });
+
+// test('testFormat', () => {
+//   expect(getParseFile('')).toEqual(null);
+//   expect(getParseFile('./__fixtures__/file1.yml')).toEqual(fileYml);
+// });
