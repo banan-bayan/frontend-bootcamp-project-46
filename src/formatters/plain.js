@@ -1,15 +1,14 @@
 import _ from 'lodash';
 
 const stringify = (file) => {
-  if (!_.isObject(file)) return (file === '') ? "''" : file;
-  return '[complex value]';
+  if (_.isObject(file)) return '[complex value]';
+  return (typeof file === 'string') ? `'${file}'` : file;
 };
 export default (tree) => {
   const iter = (node, ansestry) => {
     const strings = [];
     node.forEach((subSt) => {
       const curentAnsestry = (ansestry.length === 0) ? `${subSt.key}` : `${ansestry}.${subSt.key}`;
-      // console.log(curentAnsestry);
       if (subSt.status === 'changed') {
         strings.push(`Property '${curentAnsestry}' was updated. From ${stringify(subSt.value1)} to ${stringify(subSt.value2)}`);
       } else if (subSt.status === 'added') {

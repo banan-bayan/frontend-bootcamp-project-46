@@ -1,4 +1,3 @@
-// import _ from 'lodash';
 import compareObjects from '../utils.js';
 import getParseFile from './parser.js';
 import getFormattedTree from './formatters/stylish.js';
