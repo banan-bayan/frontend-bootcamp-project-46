@@ -1,18 +1,22 @@
+import path from 'node:path';
+import { readFileSync } from 'node:fs';
 import compareObjects from '../utils.js';
 import getParseFile from './parser.js';
-import getFormattedTree from './formatters/stylish.js';
-import getFormattedPlain from './formatters/plain.js';
-import getFormattedJson from './formatters/json.js';
+import getFormatted from './formatters/getFormattedTree.js';
 
 const getStringArr = (path1, path2, formatter = 'stylish') => {
-  const obj1 = getParseFile(path1);
-  const obj2 = getParseFile(path2);
-  const compareObjectsInfo = compareObjects(obj1, obj2);
-  if (formatter === 'stylish') return getFormattedTree(compareObjectsInfo);
-  if (formatter === 'plain') return getFormattedPlain(compareObjectsInfo);
-  if (formatter === 'json') return getFormattedJson(compareObjectsInfo);
+  const data1 = readFileSync(path1, 'utf-8');
+  const data2 = readFileSync(path2, 'utf-8');
 
-  return null;
+  const extension1 = path.extname(path1).slice(1);
+  const extension2 = path.extname(path2).slice(1);
+  const obj1 = getParseFile(data1, extension1);
+  const obj2 = getParseFile(data2, extension2);
+
+  const compareObjectsInfo = compareObjects(obj1, obj2);
+  const result = getFormatted(compareObjectsInfo, formatter);
+
+  return result;
 };
 
 export default getStringArr;

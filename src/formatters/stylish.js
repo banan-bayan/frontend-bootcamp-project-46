@@ -6,9 +6,8 @@ const sign = ' ';
 
 const stringify = (obj, depth) => {
   const iter = (node, level) => {
-    if (!_.isObject(node)) {
-      return `${node}`;
-    }
+    if (!_.isObject(node)) return `${node}`;
+
     const entries = Object.entries(node);
     const result = entries.map(([key, value]) => `${sign.repeat(space * level + space)}${key}: ${iter(value, level + 1)}`);
     const strings = `${result.join('\n')}`;
