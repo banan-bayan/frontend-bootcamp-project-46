@@ -20,7 +20,6 @@ test('testJson', () => {
   expect(getStringArr(pathTreeJson1, pathTreeJson2)).toEqual(readFileSync(pathTxtStylish, 'utf8'));
   expect(getStringArr(pathTreeJson1, pathTreeJson2, 'json')).toEqual(readFileSync(pathTxtJson, 'utf8'));
 });
-
 test('testYml', () => {
   expect(getStringArr(fileYml1, fileYml2)).toEqual(stringArr);
   expect(getStringArr(pathTreeYml1, pathTreeYml2)).toEqual(readFileSync(pathTxtStylish, 'utf8'));

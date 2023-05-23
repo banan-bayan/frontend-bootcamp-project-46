@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
-import compareObjects from '../utils.js';
+import compareObjects from './compareObjects.js';
 import getParseFile from './parser.js';
 import getFormatted from './formatters/getFormattedTree.js';
 
