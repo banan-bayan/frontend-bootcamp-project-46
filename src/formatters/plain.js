@@ -10,11 +10,14 @@ export default (tree) => {
       const curentAnsestry = (!ansestry.length) ? `${subSt.key}` : `${ansestry}.${subSt.key}`;
       if (subSt.status === 'changed') {
         return (`Property '${curentAnsestry}' was updated. From ${stringify(subSt.value1)} to ${stringify(subSt.value2)}`);
-      } else if (subSt.status === 'added') {
+      }
+      if (subSt.status === 'added') {
         return (`Property '${curentAnsestry}' was added with value: ${stringify(subSt.value)}`);
-      } else if (subSt.status === 'nested') {
+      }
+      if (subSt.status === 'nested') {
         return (`${iter(subSt.children, curentAnsestry)}`);
-      } else if (subSt.status === 'deleted') {
+      }
+      if (subSt.status === 'deleted') {
         return (`Property '${curentAnsestry}' was removed`);
       }
     });

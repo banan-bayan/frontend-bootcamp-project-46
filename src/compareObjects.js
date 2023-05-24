@@ -16,7 +16,8 @@ const compareObjects = (obj1, obj2) => {
       return ({ status: 'added', key, value: obj2[key] });
     }
     if (_.has(obj1, key) && _.has(obj2, key) && obj1[key] !== obj2[key]) {
-      return ({status: 'changed', key, value1: obj1[key], value2: obj2[key]});
+      return ({ 
+        status: 'changed', key, value1: obj1[key], value2: obj2[key] });
     }
   });
 
