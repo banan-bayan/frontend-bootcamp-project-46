@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const compareObjects = (obj1, obj2) => {
-  const keys = _.sortBy(_.union([...Object.keys(obj2), ...Object.keys(obj1)]));
+  const keys = _.union([...Object.keys(obj2), ...Object.keys(obj1)]);
   const sortKeys = _.sortBy(keys);
   const resultArr = sortKeys.map((key) => {
     if (_.isObject(obj1[key]) && (_.isObject(obj2[key]))) return ({ status: 'nested', key, children: compareObjects(obj1[key], obj2[key]) });
