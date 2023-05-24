@@ -20,7 +20,7 @@ export default (tree) => {
       if (subSt.status === 'deleted') {
         return (`Property '${curentAnsestry}' was removed`);
       }
-      return null
+      return null;
     });
     const obString = `${strings.join('\n')}`;
     return obString;

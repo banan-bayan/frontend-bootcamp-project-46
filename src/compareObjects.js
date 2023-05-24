@@ -20,6 +20,7 @@ const compareObjects = (obj1, obj2) => {
         status: 'changed', key, value1: obj1[key], value2: obj2[key],
       });
     }
+    return null;
   });
 
   return resultArr;
