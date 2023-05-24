@@ -15,16 +15,16 @@ const fileJson2 = './__fixtures__/file2.json';
 const fileYml1 = './__fixtures__/file1.yml';
 const fileYml2 = './__fixtures__/file2.yml';
 
-test('test json', () => {
+test('testJson', () => {
   expect(getStringArr(fileJson1, fileJson2)).toEqual(stringArr);
   expect(getStringArr(pathTreeJson1, pathTreeJson2)).toEqual(readFileSync(pathTxtStylish, 'utf8'));
   expect(getStringArr(pathTreeJson1, pathTreeJson2, 'json')).toEqual(readFileSync(pathTxtJson, 'utf8'));
 });
-test('test yml', () => {
+test('testYml', () => {
   expect(getStringArr(fileYml1, fileYml2)).toEqual(stringArr);
   expect(getStringArr(pathTreeYml1, pathTreeYml2)).toEqual(readFileSync(pathTxtStylish, 'utf8'));
 });
-test('test plain', () => {
+test('testPlain', () => {
   expect(getStringArr(pathTreeJson1, pathTreeJson2, 'plain')).toEqual(readFileSync(pathTxtPlain, 'utf8'));
   expect(getStringArr(pathTreeYml1, pathTreeYml2, 'plain')).toEqual(readFileSync(pathTxtPlain, 'utf8'));
 });
