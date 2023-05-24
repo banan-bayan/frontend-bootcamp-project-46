@@ -22,7 +22,7 @@ export default (tree) => {
       }
       return null;
     });
-    const obString = `${strings.join('\n')}`;
+    const obString = `${strings.filter((string) => string).join('\n')}`;
     return obString;
   };
 
