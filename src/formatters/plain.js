@@ -6,17 +6,16 @@ const stringify = (file) => {
 };
 export default (tree) => {
   const iter = (node, ansestry) => {
-    const strings = [];
-    node.forEach((subSt) => {
+    const strings = node.map((subSt) => {
       const curentAnsestry = (!ansestry.length) ? `${subSt.key}` : `${ansestry}.${subSt.key}`;
       if (subSt.status === 'changed') {
-        strings.push(`Property '${curentAnsestry}' was updated. From ${stringify(subSt.value1)} to ${stringify(subSt.value2)}`);
+        return (`Property '${curentAnsestry}' was updated. From ${stringify(subSt.value1)} to ${stringify(subSt.value2)}`);
       } else if (subSt.status === 'added') {
-        strings.push(`Property '${curentAnsestry}' was added with value: ${stringify(subSt.value)}`);
+        return (`Property '${curentAnsestry}' was added with value: ${stringify(subSt.value)}`);
       } else if (subSt.status === 'nested') {
-        strings.push(`${iter(subSt.children, curentAnsestry)}`);
+        return (`${iter(subSt.children, curentAnsestry)}`);
       } else if (subSt.status === 'deleted') {
-        strings.push(`Property '${curentAnsestry}' was removed`);
+        return (`Property '${curentAnsestry}' was removed`);
       }
     });
     const obString = `${strings.join('\n')}`;

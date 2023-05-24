@@ -18,16 +18,15 @@ const stringify = (obj, depth) => {
 
 export default (tree) => {
   const iter = (node, level) => {
-    const strings = [];
-    node.forEach((subSt) => {
+    const strings = node.map((subSt) => {
       if (subSt.status === 'changed') {
-        strings.push(`${sign.repeat(space * level
+        return (`${sign.repeat(space * level
           + (space / 2))}- ${subSt.key}: ${stringify(subSt.value1, level + 1)}\n${sign.repeat(space * level
           + (space / 2))}+ ${subSt.key}: ${stringify(subSt.value2, level + 1)}`);
       } else if (subSt.status === 'nested') {
-        strings.push(`${sign.repeat(space + level * space)}${subSt.key}: ${iter(subSt.children, level + 1)}`);
+        return (`${sign.repeat(space + level * space)}${subSt.key}: ${iter(subSt.children, level + 1)}`);
       } else {
-        strings.push(`${sign.repeat(space * level
+        return (`${sign.repeat(space * level
           + (space / 2))}${statuses[subSt.status]} ${subSt.key}: ${stringify(subSt.value, level + 1)}`);
       }
     });
