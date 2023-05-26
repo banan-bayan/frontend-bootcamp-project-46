@@ -1,8 +1,13 @@
 import _ from 'lodash';
-import statuses from '../../constants.js';
+// import statuses from '../../constants.js';
 
 const space = 4;
 const sign = ' ';
+const statuses = {
+  unchanged: ' ',
+  deleted: '-',
+  added: '+',
+};
 
 const stringify = (obj, depth) => {
   const iter = (node, level) => {

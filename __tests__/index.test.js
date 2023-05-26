@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { test, expect } from '@jest/globals';
 import getStringArr from '../src/index.js';
-import { stringArr } from '../constants.js';
+import stringArr from '../__fixtures__/stringArr.js';
 
 const pathTxtStylish = './__fixtures__/tree.txt';
 const pathTxtPlain = './__fixtures__/plain.txt';
